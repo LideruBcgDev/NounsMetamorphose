@@ -1,0 +1,74 @@
+{
+  "assset_dir": "assets/",
+  "output_dir": "output/",
+  "json_dir": "json/",
+  "thumbnail_dir": "thumbnail/",
+  "csv_file_name": "metadata.csv",
+  "max_image_generate": 5000,
+  "thumbnail": {
+    "width": 300,
+    "height": 300
+  },
+  "traits": [
+    {
+      "name": "background",
+      "order": 1
+    },
+    {
+      "name": "back",
+      "order": 2
+    },
+    {
+      "name": "water back",
+      "order": 3
+    },
+    {
+      "name": "hair back",
+      "order": 4
+    },
+    {
+      "name": "face",
+      "order": 5
+    },
+    {
+      "name": "mouth",
+      "order": 6
+    },
+    {
+      "name": "eyes",
+      "order": 7
+    },
+    {
+      "name": "clothes",
+      "order": 8
+    },
+    {
+      "name": "hair",
+      "order": 9
+    },
+
+    {
+      "name": "mask",
+      "order": 10
+    },
+    {
+      "name": "glasses",
+      "order": 11
+    },
+    {
+      "name": "water",
+      "order": 11
+    }
+    ,
+    {
+      "name": "water top",
+      "order": 12
+    },
+
+    {
+      "name": "hands",
+      "order": 13
+    }
+
+  ]
+}
