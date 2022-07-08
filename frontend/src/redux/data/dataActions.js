@@ -31,16 +31,18 @@ export const fetchData = () => {
         .blockchain.smartContract.methods.totalSupply()
         .call();
 
-      const cost = await store
-        .getState()
-        .blockchain.smartContract.methods.getCurrentCost()
-        .call();
+      // const cost = await store
+      //   .getState()
+      //   .blockchain.smartContract.methods.getCurrentCost()
+      //   .call();
+      const cost = "0";
       const display_cost = web3.utils.fromWei(cost, "ether");
 
-      const presale = await store
-        .getState()
-        .blockchain.smartContract.methods.presale()
-        .call();
+      // const presale = await store
+      //   .getState()
+      //   .blockchain.smartContract.methods.presale()
+      //   .call();
+      const presale = false;
 
       dispatch(
         fetchDataSuccess({

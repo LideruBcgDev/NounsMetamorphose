@@ -13,7 +13,7 @@ const truncate = (input, len) =>
 export const StyledButton = styled.button`
   padding: 16px 40px;
   border: none;
-  background-color: ${(props) => (props.disabled ? "#505050" : "#48e1af")};
+  background-color: ${(props) => (props.disabled ? "#505050" : "#E0B34E")};
   font-weight: bold;
   color: var(--secondary-text);
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
@@ -28,11 +28,11 @@ export const StyledRoundButton = styled.button`
   padding: 10px;
   border-radius: 100%;
   border: none;
-  background-color: var(--primary);
+  background-color: #E0B34E;
   padding: 10px;
   font-weight: bold;
   font-size: 15px;
-  color: black;
+  color: var(--secondary-text);
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -75,7 +75,7 @@ const Mint = () => {
   const data = useSelector((state) => state.data);
   const [merkle, setMerkle] = useState([]);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
+  const [feedback, setFeedback] = useState(`Click mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -87,7 +87,7 @@ const Mint = () => {
     },
     NFT_NAME: "",
     SYMBOL: "",
-    MAX_SUPPLY: 1,
+    MAX_SUPPLY: 1024,
     GAS_LIMIT: 0,
     MARKETPLACE: "",
     MARKETPLACE_LINK: "",
@@ -108,11 +108,7 @@ const Mint = () => {
     let totalGasLimit = String(gasLimit * mintAmount);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
-    if (data.presale) {
-      method = blockchain.smartContract.methods.preMint(mintAmount, merkle.hexProof);
-    } else {
-      method =  blockchain.smartContract.methods.publicMint(mintAmount);
-    }
+    method =  blockchain.smartContract.methods.mint(mintAmount);
     method
       .send({
         gasLimit: String(totalGasLimit),
@@ -144,9 +140,7 @@ const Mint = () => {
   };
 
   const incrementMintAmount = () => {
-    const MAX_MINT_AMOUNT = data.presale
-      ? CONFIG.MAX_MINT_AMOUNT_PRE
-      : CONFIG.MAX_MINT_AMOUNT_PUBLIC;
+    const MAX_MINT_AMOUNT = CONFIG.MAX_MINT_AMOUNT_PUBLIC;
     let newMintAmount = mintAmount + 1;
     if (newMintAmount > MAX_MINT_AMOUNT) {
       newMintAmount = MAX_MINT_AMOUNT;
@@ -254,7 +248,7 @@ const Mint = () => {
           getData();
         }}
       >
-        <BuyButtonContent>{claimingNft ? indicatorEl : "BUY"}</BuyButtonContent>
+        <BuyButtonContent>{claimingNft ? indicatorEl : "mint"}</BuyButtonContent>
       </StyledButton>
     );
   };
@@ -265,12 +259,12 @@ const Mint = () => {
         <s.TextTitle
           style={{ textAlign: "center", color: "var(--accent-text)" }}
         >
-          1 {CONFIG.SYMBOL} costs {data.displayCost} {CONFIG.NETWORK.SYMBOL}.
+          {/* 1 {CONFIG.SYMBOL} costs {data.displayCost} {CONFIG.NETWORK.SYMBOL}. */}
         </s.TextTitle>
         <s.TextDescription
           style={{ textAlign: "center", color: "var(--accent-text)" }}
         >
-          {data.presale ? "PRESALE LIVE!" : "PUBLIC SALE LIVE!"}
+          {/* {data.presale ? "PRESALE LIVE!" : "PUBLIC SALE LIVE!"} */}
         </s.TextDescription>
         <s.SpacerSmall />
 
@@ -316,7 +310,8 @@ const Mint = () => {
         </s.Container>
         <s.SpacerSmall />
         <s.Container ai={"center"} jc={"center"} fd={"row"}>
-          {data.cost ? <BuyButton /> : <div color="#FFFFFF">Loading</div>}
+          {/* {data.cost ? <BuyButton /> : <div color="#FFFFFF">Loading</div>} */}
+          <BuyButton />
         </s.Container>
       </>
     );
@@ -348,7 +343,7 @@ const Mint = () => {
           border: "0px dashed var(--secondary)",
         }}
       >
-        <s.TextTitle
+        {/* <s.TextTitle
           style={{
             textAlign: "center",
             color: "var(--secondary)",
@@ -356,7 +351,7 @@ const Mint = () => {
         >
           Mintlist sale: TBA <br />
           Public sale: TBA JST
-        </s.TextTitle>
+        </s.TextTitle> */}
         <s.SpacerSmall />
         <s.TextTitle
           style={{
@@ -389,34 +384,42 @@ const Mint = () => {
           <MintButton config={CONFIG} />
         )}
         <s.SpacerMedium />
-        <s.TextDescription
+        {/* <s.TextDescription
           style={{ textAlign: "center", color: "var(--accent-text)" }}
         >
           NFT Marketplace
-        </s.TextDescription>
-        <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
+        </s.TextDescription> */}
+        {/* <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
           {CONFIG.MARKETPLACE}
-        </StyledLink>
-      </s.Container>
-      <s.SpacerLarge />
-      <s.Container>
+        </StyledLink> */}
         <s.TextDescription
           style={{
             textAlign: "left",
-            color: "var(--accent)",
+            color: "var(--accent-text)",
           }}
         >
-          Pre/Public Price: 0.01ETH
+           Price: freemint
           <br />
-          WhiteList Max: 10 NFTs per address
-          <br />
-          Public Max: 10 NFTs per Transaction
+           Max 5 NFTs per Wallet
         </s.TextDescription>
+      </s.Container>
+      <s.SpacerLarge />
+      <s.Container>
+        {/* <s.TextDescription
+          style={{
+            textAlign: "left",
+            color: "var(--accent-text)",
+          }}
+        >
+           Price: freemint
+          <br />
+           Max 5 NFTs per Transaction
+        </s.TextDescription> */}
         <s.SpacerMedium />
         <s.TextDescription
           style={{
             textAlign: "left",
-            color: "var(--accent)",
+            color: "var(--accent-text)",
           }}
         >
           Please make sure you are connected to the right network (

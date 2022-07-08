@@ -1,6 +1,6 @@
 {
-  "CONTRACT_ADDRESS": "0x807cdaf7EfDFB9834CEc8b09EE6F464e3FBd8Dd0",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x807cdaf7EfDFB9834CEc8b09EE6F464e3FBd8Dd0",
+  "CONTRACT_ADDRESS": "0x0322DE8F84C8577e6CED2eD2f87862451d2bF36e",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x0322DE8F84C8577e6CED2eD2f87862451d2bF36e",
   "NETWORK": {
     "NAME": "Rinkeby",
     "SYMBOL": "ETH",
@@ -9,13 +9,13 @@
     "RPC_URL": "https://eth-rinkeby.alchemyapi.io/v2/WG68WJV_dEDvQY7Lnyt5ZxwK6FBCEHLJ",
     "BLOCK_EXPLORER_URL": "https://rinkeby.etherscan.io/"
   },
-  "NFT_NAME": "NFTBoilMerkle",
-  "SYMBOL": "BOIL",
-  "MAX_SUPPLY": 7000,
+  "NFT_NAME": "NounsMetaporphose",
+  "SYMBOL": "NM",
+  "MAX_SUPPLY": 1024,
   "GAS_LIMIT": 200000,
   "PAUSED": false,
   "MARKETPLACE": "OpenSea",
   "MARKETPLACE_LINK": "https://opensea.io/",
   "MAX_MINT_AMOUNT_PRE": 5,
-  "MAX_MINT_AMOUNT_PUBLIC": 10
+  "MAX_MINT_AMOUNT_PUBLIC": 5
 }
